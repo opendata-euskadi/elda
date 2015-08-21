@@ -27,7 +27,7 @@ public class MediaType
 	
 	public static final MediaType TEXT_PLAIN = new MediaType( "text", "plain" );
 	
-	public static final MediaType APPLICATION_JSON = new MediaType( "application", "json" );
+	public static final MediaType APPLICATION_JSON = new MediaType( "application", "json", "; charset=utf-8" );
 
 	public static final MediaType APPLICATION_XML = new MediaType( "application", "xml" );
 	
@@ -95,6 +95,10 @@ public class MediaType
 	*/
 	public String getSubtype()
 		{ return subType; }
+	
+	public String getParamString() {
+		return params;
+	}
 	
 	/**
 	    Answer a plausible hash code for this MediaType based on the
