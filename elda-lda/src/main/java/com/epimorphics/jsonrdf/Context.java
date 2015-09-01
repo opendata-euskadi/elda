@@ -40,7 +40,7 @@ import com.hp.hpl.jena.vocabulary.*;
  */
 public class Context implements ReadContext, Cloneable {
 	
-	static Logger log = LoggerFactory.getLogger(Context.class);
+	public static Logger log = LoggerFactory.getLogger(Context.class);
 
     protected String base = null;
     

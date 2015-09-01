@@ -14,7 +14,11 @@ import static org.junit.Assert.fail;
 import java.io.ByteArrayOutputStream;
 import java.util.*;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
 
 import com.epimorphics.jsonrdf.Context;
 import com.epimorphics.jsonrdf.utils.ModelIOUtils;
@@ -26,9 +30,39 @@ import com.epimorphics.lda.renderers.XMLRenderer;
 import com.epimorphics.lda.shortnames.CompleteContext;
 import com.epimorphics.lda.support.Times;
 import com.epimorphics.lda.tests.SNS;
+import com.epimorphics.lda.tests_support.TrackingLogger;
 import com.hp.hpl.jena.rdf.model.*;
 
 public class TestShortNames {
+		
+	Logger oldLogger = null;
+	
+	TrackingLogger logLogging = new TrackingLogger();
+	
+	@BeforeClass public static void setupForClass() {
+	}
+	
+	@Before public void setUpForTest() {
+//		BasicConfigurator.configure(appender);
+		oldLogger = Context.log;
+		Context.log = logLogging;
+	}
+	
+	@After public void tearDownForTest() {	
+//		BasicConfigurator.resetConfiguration();
+		Context.log = oldLogger;
+	}
+	
+	
+	@Test public void ensureContextReportsBadShortname() {
+		Context c = new Context();
+		c.recordPreferredName("bad-name", "http://example.com/bad");
+//		String message =  logWriter.getBuffer().toString();
+		String message = logLogging.messages.get(0);
+		if (!message.matches("^WARN:.*bad-name.*not a legal shortname.*/bad.*$")) 
+			fail("did not detect illegal shortname [message was " + message + "]");
+			;
+	}
 	
 	@Test public void ensureUndeclatedURIUsesPrefix() {
 		Model m = ModelIOUtils.modelFromTurtle( "@prefix p: <http://example.com/ns#>. p:a p:thing p:b; p:other p:d; p:thong p:c." );
