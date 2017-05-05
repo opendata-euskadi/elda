@@ -9,9 +9,10 @@ spec:describe-calidad-aire a api:API
 	; api:sparqlEndpoint <http://localhost:9999/blazegraph/sparql>
 	; api:defaultViewer api:labelledDescribeViewer
 	; api:defaultFormatter spec:HtmlFormatter 
-	; api:viewer api:labelledDescribeViewer
+	; api:viewer api:labelledDescribeViewer, api:describeViewer, api:basicViewer
 	; api:endpoint 
 		spec:describe
+		, spec:anything
 	; api:variable [api:name "_exceptionIfEmpty"; api:value "no"]
 	; api:variable [api:name "_resourceRoot"; api:value "http://localhost:8080/elda-assets/"]
 	.
@@ -31,3 +32,16 @@ spec:describe a api:ItemEndpoint
     ; api:viewer          api:describeViewer
     ; api:defaultViewer   api:describeViewer
     .
+    
+spec:anything a api:ListEndpoint
+    ; api:name            	"anything" 
+    ; rdfs:comment        	"A generic listing endpoint for listing things based solely on URI based filter parameters"@en
+    ; api:uriTemplate		"/anything"
+    ; api:selector			[api:where   " ?item a ?v1 . FILTER (!isBlank(?item)) "]
+    ; api:exampleRequestPath  "/anything"
+###
+### no selector - defers everything to URI params
+###
+     ; api:viewer api:describeViewer, api:basicViewer, api:labelledDescribeViewer
+     ; api:defaultViewer   api:describeViewer
+     .
