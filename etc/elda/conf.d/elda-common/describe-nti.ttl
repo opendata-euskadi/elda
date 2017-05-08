@@ -1,0 +1,41 @@
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spec:	<http://euskadi.eus/api-config#> .
+@prefix api:    <http://purl.org/linked-data/api/vocab#> .
+@prefix elda:   <http://www.epimorphics.com/vocabularies/lda#> .
+
+spec:describe-calidad-aire a api:API
+	; api:base "/"
+	; rdfs:label "Experimento con dataset calidad del aire"
+	; api:sparqlEndpoint <http://localhost:9999/blazegraph/sparql>
+	; api:defaultViewer api:labelledDescribeViewer
+	; api:defaultFormatter spec:HtmlFormatter 
+	; api:viewer api:labelledDescribeViewer, api:describeViewer, api:basicViewer
+	; api:endpoint 
+		spec:describe
+		, spec:anything
+	; api:variable [api:name "_exceptionIfEmpty"; api:value "no"]
+	; api:variable [api:name "_resourceRoot"; api:value "http://localhost:8080/elda-assets/"]
+	.
+	
+spec:HtmlFormatter a api:XsltFormatter 
+	; api:name "html" 
+	; api:mimeType "text/html; charset=utf-8" 
+	; api:stylesheet "http://localhost:8080/elda-assets/xslt/result.xsl"
+	.
+
+
+# URIs genericas definidas por la NTI, no funcionan:
+
+# http://epimorphics.github.io/elda/current/cribsheet.html
+# any endpoint	api:uriTemplate	"/path/with/{var}"	This endpoint is invoked when the URI path matches the template. The variable var is bound to the last segment of the path.
+
+# http://localhost:8080/elda-common/id/medio-ambiente/calidad-del-aire/elemento/CO-2017-01-02
+# http://opendata.euskadi.eus/id/medio-ambiente/calidad-del-aire/elemento/CO-2017-01-02
+spec:describe a api:ItemEndpoint
+	; api:uriTemplate     "/id/{sector}/{dominio}/{clase}/{identificador}"
+    ; rdfs:comment        "A generic item endpoint API for asking about a specific thing by 'uri'."
+    ; api:itemTemplate    "http://opendata.euskadi.eus/id/{sector}/{dominio}/{clase}/{identificador}"
+    ; api:viewer          api:describeViewer
+    ; api:defaultViewer   api:describeViewer
+    .
+    

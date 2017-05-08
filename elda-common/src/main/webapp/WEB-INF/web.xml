@@ -11,7 +11,8 @@
        <param-name>com.epimorphics.api.initialSpecFile</param-name>
        <!-- <param-value>/etc/elda/conf.d/{APP}/*.ttl</param-value> -->
        <!-- <param-value>/etc/elda/conf.d/elda-common/hello-mikel.ttl</param-value> -->
-       <param-value>/etc/elda/conf.d/elda-common/describe-calidad-aire.ttl</param-value>
+       <!-- <param-value>/etc/elda/conf.d/elda-common/describe-calidad-aire.ttl</param-value> -->
+       <param-value>/etc/elda/conf.d/elda-common/describe-nti.ttl</param-value>
     </context-param>
 
   <!-- ==================================================================== -->
