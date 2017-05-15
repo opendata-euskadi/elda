@@ -48,7 +48,7 @@
   </dependencies>
 
   <build>
-    <finalName>elda-common</finalName>
+    <finalName>doc</finalName>
     <plugins>
 
       <plugin>
