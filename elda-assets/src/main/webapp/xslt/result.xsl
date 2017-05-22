@@ -326,24 +326,24 @@ $prefLabel, $altLabel, $title and $name variables.
 		<xsl:apply-templates select="." mode="formats" />
 	</nav>
 	<header>
-		<h1><a href="/">Linked Data API</a></h1>
+		<h1><a href="/"><!-- Open Data Euskadi--></a></h1>
 	</header>
 </xsl:template>
 
 <xsl:template match="result" mode="footer">
 	<footer>
-		<xsl:apply-templates select="wasResultOf" mode="footer" />
-		<p>
-			<xsl:text>Powered by </xsl:text>
+		<!-- <xsl:apply-templates select="wasResultOf" mode="footer" />-->
+		<p>Open data Euskadi
+			<!-- <xsl:text>Powered by </xsl:text>
 			<xsl:apply-templates select="wasResultOf/processor" mode="footer" />
 			<xsl:text>an implementation of the </xsl:text>
 			<a href="http://code.google.com/p/linked-data-api">Linked Data API</a><br />
-			<a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a>
+			<a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a>-->
 		</p>
 	</footer>
 </xsl:template>
 
-<xsl:template match="wasResultOf" mode="footer">
+ <xsl:template match="wasResultOf" mode="footer">
 	<div class="provenance">
 		<xsl:apply-templates select="selectionResult[query/value != '']" mode="footer" />
 		<xsl:apply-templates select="viewingResult[query/value != '']" mode="footer" />
@@ -512,7 +512,7 @@ $prefLabel, $altLabel, $title and $name variables.
 				<xsl:when test="items">
 					<header>
 						<xsl:if test="items/item">
-							<p id="openSearch">Show Search Form</p>
+							<!-- <p id="openSearch">Show Search Form</p>-->
 						</xsl:if>
 						<h1>Search Results</h1>
 					</header>
@@ -1949,7 +1949,7 @@ $prefLabel, $altLabel, $title and $name variables.
 
 <xsl:template match="/result/primaryTopic" mode="content" priority="10">
 	<header>
-		<p id="openSearch">Show Search Form</p>
+		<!-- <p id="openSearch">Show Search Form</p>-->
 		<h1><xsl:apply-templates select="." mode="name" /></h1>
 		<p class="id"><a href="{@href}"><xsl:value-of select="@href" /></a></p>
 	</header>

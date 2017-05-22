@@ -25,13 +25,13 @@ nav.site {
 }
 
 header h1 {
-	background: url("../images/molecule.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/logo_opendata.gif") no-repeat scroll 0 0 transparent;
 	color: #555555;
 	font-size: 3em;
 	font-weight: 300;
 	font-family: Gill Sans, Arial, sans-serif;
 	margin-left: 42px;
-	padding: 0.5em 66px 1em;
+	padding: 0.5em 66px 1.5em;
 }
 
 nav.topnav {

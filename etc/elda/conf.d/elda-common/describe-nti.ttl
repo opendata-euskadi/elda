@@ -3,8 +3,8 @@
 @prefix api:    <http://purl.org/linked-data/api/vocab#> .
 @prefix elda:   <http://www.epimorphics.com/vocabularies/lda#> .
 
-spec:describe-calidad-aire a api:API
-	; api:base "/"
+spec:describe-nti a api:API
+	; api:base "/doc/"
 	; rdfs:label "Experimento con dataset calidad del aire"
 	; api:sparqlEndpoint <http://localhost:9999/blazegraph/sparql>
 	; api:defaultViewer api:labelledDescribeViewer
@@ -13,13 +13,13 @@ spec:describe-calidad-aire a api:API
 	; api:endpoint 
 		spec:describe
 	; api:variable [api:name "_exceptionIfEmpty"; api:value "no"]
-	; api:variable [api:name "_resourceRoot"; api:value "http://localhost:8080/elda-assets/"]
+	; api:variable [api:name "_resourceRoot"; api:value "http://172.16.0.81:8008/elda-assets/"]
 	.
 	
 spec:HtmlFormatter a api:XsltFormatter 
 	; api:name "html" 
 	; api:mimeType "text/html; charset=utf-8" 
-	; api:stylesheet "http://localhost:8080/elda-assets/xslt/result.xsl"
+	; api:stylesheet "http://172.16.0.81:8008/elda-assets/xslt/result.xsl"
 	.
 
 # URIs genericas definidas por la NTI:
@@ -29,8 +29,8 @@ spec:HtmlFormatter a api:XsltFormatter
 spec:describe a api:ItemEndpoint
 	; rdfs:label 		  "GET Resource" 
 	; rdfs:comment        "A generic item endpoint API for asking about a specific thing by 'uri'."
-	; api:uriTemplate     "/id/{sector}/{dominio}/{clase}/{identificador}"
-	; api:variable [api:name "uriITEM"; api:value "http://opendata.euskadi.eus/id/{sector}/{dominio}/{clase}/{identificador}"]	
+    ; api:uriTemplate     "/{lang}/{sector}/{dominio}/{clase}/{identificador}"
+    ; api:variable [api:name "uriITEM"; api:value "http://{lang}.euskadi.eus/id/{sector}/{dominio}/{clase}/{identificador}"]    	
 	; api:selector [
 	    api:select """
 			select distinct ?item where{					
