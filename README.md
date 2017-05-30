@@ -30,7 +30,12 @@
 <b>(!!!)</b> Edits by Mikel for local deploy:
 
 * Edited /elda/elda-common/src/main/webapp/WEB-INF/web.xml
-* Added /elda/etc/elda/conf.d/elda-common/hello-mikel.ttl
+* Added /etc/elda/conf.d/elda-common/describe-nti.ttl
+* Edited /elda-assets/src/main/webapp/css/result.css
+* Added /elda-assets/src/main/webapp/images/logo_opendata.gif
+* Added /elda/test-data/calidad-aire-en-euskadi-2017
+* Edited /elda-assets/src/main/webapp/xslt/result.xsl
+
 
 For the RDF data used, refer to https://github.com/opendata-euskadi/LOD-datasets/tree/URIs-con-ID-envezde-RECURSO/calidad-aire-en-euskadi-2017/rdf
 
